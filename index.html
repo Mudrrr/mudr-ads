@@ -361,6 +361,28 @@
     .rep span { font-size: 15px; }
   }
 
+
+  .curbar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+  .curbtns { display: inline-flex; border: 1px solid var(--hero-line); border-radius: 999px; overflow: hidden; }
+  .curbtn { font: inherit; font-size: 15px; font-weight: 620; line-height: 1; padding: 9px 16px; background: transparent; color: var(--hero-ink-2); border: 0; cursor: pointer; transition: background .12s, color .12s; }
+  .curbtn + .curbtn { border-left: 1px solid var(--hero-line); }
+  .curbtn:hover { color: var(--hero-ink); }
+  .curbtn.is-on { background: var(--series-1); color: #fff; }
+  .curnote { font-size: 13px; color: var(--hero-ink-2); }
+  .cur, .cur-sym { white-space: nowrap; }
+
+  .stickycta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--hero-bg); border-top: 1px solid var(--hero-line); padding: 12px 20px; display: flex; align-items: center; gap: 14px; transform: translateY(110%); transition: transform .25s ease; }
+  .stickycta.is-on { transform: none; }
+  .stickycta p { margin: 0; color: var(--hero-ink-2); font-size: 14.5px; flex: 1; }
+  .stickycta .btn { padding: 11px 20px; font-size: 15px; }
+  .stickycta .close { background: transparent; border: 0; color: var(--hero-ink-2); font-size: 22px; line-height: 1; cursor: pointer; padding: 4px 6px; }
+  .stickycta .close:hover { color: var(--hero-ink); }
+  @media (max-width: 720px) {
+    .stickycta { flex-wrap: wrap; padding: 10px 14px; gap: 10px; }
+    .stickycta p { flex: 1 1 100%; font-size: 13.5px; order: -1; }
+    .stickycta .btn { flex: 1; width: auto; }
+  }
+
   .facts { margin: 22px 0 0; padding: 0; border-top: 1px solid var(--border); }
   .facts > div {
     display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
@@ -488,15 +510,24 @@
 <header class="hero">
   <div class="wrap">
     <p class="eyebrow">Google Ads · зарубежная недвижимость · февраль — июль 2026</p>
-    <h1>Продажа недвижимости на Пхукете: 369 лидов по 1.045&nbsp;฿ и 7 сделок по 55.065&nbsp;฿</h1>
+    <h1>Продажа недвижимости на Пхукете: 369 лидов по <span class="cur" data-thb="1045">1.045&nbsp;฿</span> и 7 сделок по <span class="cur" data-thb="55065">55.065&nbsp;฿</span></h1>
     <p class="lead">Привет, это Андрей Мудрицкий. Я строю систему по привлечению клиентов в зарубежной недвижимости: от сайта и Google Ads до квалификации лида, показа объекта и депозита.</p>
     <p>Рассказываю, как привлёк лиды, квалы и в итоге шесть покупателей квартир и вилл на Пхукете за полгода. Показываю цифры — без названия агентства и коммерческих данных клиента. Квартир семь, а покупателей шесть: один взял сразу две одной сделкой.</p>
 
+    <div class="curbar">
+      <div class="curbtns" role="group" aria-label="Валюта">
+        <button type="button" class="curbtn is-on" data-cur="THB">฿</button>
+        <button type="button" class="curbtn" data-cur="RUB">₽</button>
+        <button type="button" class="curbtn" data-cur="USD">$</button>
+      </div>
+      <span class="curnote" id="curnote">Все суммы в батах</span>
+    </div>
+
     <div class="tiles">
-      <div class="tile"><div class="v">1.045&nbsp;฿</div><div class="k">заявка</div></div>
-      <div class="tile"><div class="v">1.626&nbsp;฿</div><div class="k">квалифицированный лид</div></div>
-      <div class="tile"><div class="v">8.379&nbsp;฿</div><div class="k">личный показ объекта</div></div>
-      <div class="tile"><div class="v">55.065&nbsp;฿</div><div class="k">проданная квартира</div></div>
+      <div class="tile"><div class="v"><span class="cur" data-thb="1045">1.045&nbsp;฿</span></div><div class="k">заявка</div></div>
+      <div class="tile"><div class="v"><span class="cur" data-thb="1626">1.626&nbsp;฿</span></div><div class="k">квалифицированный лид</div></div>
+      <div class="tile"><div class="v"><span class="cur" data-thb="8379">8.379&nbsp;฿</span></div><div class="k">личный показ объекта</div></div>
+      <div class="tile"><div class="v"><span class="cur" data-thb="55065">55.065&nbsp;฿</span></div><div class="k">проданная квартира</div></div>
     </div>
 
 
@@ -516,10 +547,10 @@
     <p class="lead">Google Ads, новостройки Пхукета, русскоязычные покупатели недвижимости, февраль — июль 2026. Вот сколько стоил каждый шаг.</p>
 
     <dl class="facts">
-      <div><dt>Заявка</dt><dd>1.045&nbsp;฿</dd></div>
-      <div><dt>Квалифицированный лид</dt><dd>1.626&nbsp;฿</dd></div>
-      <div><dt>Личный показ объекта</dt><dd>8.379&nbsp;฿</dd></div>
-      <div><dt>Проданная квартира</dt><dd>55.065&nbsp;฿</dd></div>
+      <div><dt>Заявка</dt><dd><span class="cur" data-thb="1045">1.045&nbsp;฿</span></dd></div>
+      <div><dt>Квалифицированный лид</dt><dd><span class="cur" data-thb="1626">1.626&nbsp;฿</span></dd></div>
+      <div><dt>Личный показ объекта</dt><dd><span class="cur" data-thb="8379">8.379&nbsp;฿</span></dd></div>
+      <div><dt>Проданная квартира</dt><dd><span class="cur" data-thb="55065">55.065&nbsp;฿</span></dd></div>
     </dl>
 
     <p class="facts-lead">Конверсия между шагами</p>
@@ -530,7 +561,7 @@
       <div><dt>Заявка → сделка</dt><dd>1,63%</dd></div>
     </dl>
 
-    <p>Всего за 5,8 месяца: <strong>369 заявок → 237 квалифицированных → 46 показов → 6 сделок и 7 проданных квартир.</strong> Рекламный расход 385.453&nbsp;฿ — это около 66.000&nbsp;฿ в месяц и примерно одна сделка в месяц.</p>
+    <p>Всего за 5,8 месяца: <strong>369 заявок → 237 квалифицированных → 46 показов → 6 сделок и 7 проданных квартир.</strong> Рекламный расход <span class="cur" data-thb="385453">385.453&nbsp;฿</span> — это около <span class="cur" data-thb="66000">66.000&nbsp;฿</span> в месяц и примерно одна сделка в месяц.</p>
   </div>
 </section>
 
@@ -552,18 +583,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td data-label="Шаг">Заявка</td><td data-label="Людей" class="num">369</td><td data-label="Цена,&nbsp;฿" class="num big">1.045</td><td data-label="Из прошлого шага" class="num">—</td><td data-label="От заявок" class="num">100%</td></tr>
-          <tr><td data-label="Шаг">Квалифицированный лид</td><td data-label="Людей" class="num">237</td><td data-label="Цена,&nbsp;฿" class="num big">1.626</td><td data-label="Из прошлого шага" class="num">64,2%</td><td data-label="От заявок" class="num">64,2%</td></tr>
-          <tr><td data-label="Шаг">Личный показ объекта</td><td data-label="Людей" class="num">46</td><td data-label="Цена,&nbsp;฿" class="num big">8.379</td><td data-label="Из прошлого шага" class="num">19,4%</td><td data-label="От заявок" class="num">12,5%</td></tr>
-          <tr><td data-label="Шаг">Сделка, оплачен депозит</td><td data-label="Людей" class="num">6</td><td data-label="Цена,&nbsp;฿" class="num big">64.242</td><td data-label="Из прошлого шага" class="num">13,0%</td><td data-label="От заявок" class="num">1,63%</td></tr>
-          <tr class="hl"><td data-label="Шаг">Проданная квартира</td><td data-label="Людей" class="num">7</td><td data-label="Цена,&nbsp;฿" class="num big">55.065</td><td data-label="Из прошлого шага" class="num">15,2%</td><td data-label="От заявок" class="num">1,90%</td></tr>
+          <tr><td data-label="Шаг">Заявка</td><td data-label="Людей" class="num">369</td><td data-label="Цена,&nbsp;฿" data-curlabel class="num big"><span class="cur" data-thb="1045" data-nosym>1.045</span></td><td data-label="Из прошлого шага" class="num">—</td><td data-label="От заявок" class="num">100%</td></tr>
+          <tr><td data-label="Шаг">Квалифицированный лид</td><td data-label="Людей" class="num">237</td><td data-label="Цена,&nbsp;฿" data-curlabel class="num big"><span class="cur" data-thb="1626" data-nosym>1.626</span></td><td data-label="Из прошлого шага" class="num">64,2%</td><td data-label="От заявок" class="num">64,2%</td></tr>
+          <tr><td data-label="Шаг">Личный показ объекта</td><td data-label="Людей" class="num">46</td><td data-label="Цена,&nbsp;฿" data-curlabel class="num big"><span class="cur" data-thb="8379" data-nosym>8.379</span></td><td data-label="Из прошлого шага" class="num">19,4%</td><td data-label="От заявок" class="num">12,5%</td></tr>
+          <tr><td data-label="Шаг">Сделка, оплачен депозит</td><td data-label="Людей" class="num">6</td><td data-label="Цена,&nbsp;฿" data-curlabel class="num big"><span class="cur" data-thb="64242" data-nosym>64.242</span></td><td data-label="Из прошлого шага" class="num">13,0%</td><td data-label="От заявок" class="num">1,63%</td></tr>
+          <tr class="hl"><td data-label="Шаг">Проданная квартира</td><td data-label="Людей" class="num">7</td><td data-label="Цена,&nbsp;฿" data-curlabel class="num big"><span class="cur" data-thb="55065" data-nosym>55.065</span></td><td data-label="Из прошлого шага" class="num">15,2%</td><td data-label="От заявок" class="num">1,90%</td></tr>
         </tbody>
       </table>
     </div>
 
     <p class="note">Что считается чем: квалифицированный лид — заявка, дошедшая до живого разговора; личный показ — встреча в офисе или выезд на объект, а не звонок; сделка — оплаченный депозит. Расход считается только по Google Ads, а заявки — все, что пришли агентству за период, поэтому чистая цена заявки только по Google выше опубликованной.</p>
 
-    <p class="note">Две последние строки — одно и то же событие в двух базах счёта. Депозит внесли по шести заявкам, а квартир продано семь: один человек купил сразу две одной сделкой. Поэтому цена сделки 64.242&nbsp;฿, а цена проданной квартиры 55.065&nbsp;฿ — сравнивайте со своим тем, что считаете вы.</p>
+    <p class="note">Две последние строки — одно и то же событие в двух базах счёта. Депозит внесли по шести заявкам, а квартир продано семь: один человек купил сразу две одной сделкой. Поэтому цена сделки <span class="cur" data-thb="64242">64.242&nbsp;฿</span>, а цена проданной квартиры <span class="cur" data-thb="55065">55.065&nbsp;฿</span> — сравнивайте со своим тем, что считаете вы.</p>
 
 
     <h3>Ещё три числа из того же аккаунта</h3>
@@ -571,14 +602,14 @@
     <div class="tscroll">
       <table class="kv">
         <tbody>
-          <tr><td class="k">CPC февраль → июль</td><td class="num big">6,5 → 24,9&nbsp;฿</td><td>ставку не ограничивали, цену выбирала автостратегия</td></tr>
+          <tr><td class="k">CPC февраль → июль</td><td class="num big"><span class="cur" data-thb="6.5" data-nosym>6,5</span> → <span class="cur" data-thb="24.9">24,9&nbsp;฿</span></td><td>ставку не ограничивали, цену выбирала автостратегия</td></tr>
           <tr><td class="k">Сделок в месяц</td><td class="num big">1,03</td><td>при потоке около 63 заявок в месяц</td></tr>
           <tr><td class="k">Самый быстрый цикл до депозита</td><td class="num big">7 дней</td><td>верхнюю границу этот период не измеряет — аккаунт работает с февраля 2026</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p class="note">Про цену клика важно не ошибиться в выводе. Это не подорожание аукциона: верхнюю границу ставки мы намеренно не ограничивали, кампания работает на автостратегии, и 24,9&nbsp;฿ — просто та цена, которую алгоритм счёл оправданной, чтобы держать текущий поток заявок. Отсюда практический вывод: в такой конфигурации цена клика вообще не метрика для решений. Смотреть надо на цену заявки и цену квалифицированного лида — они внизу воронки и учитывают качество трафика, а не только его стоимость.</p>
+    <p class="note">Про цену клика важно не ошибиться в выводе. Это не подорожание аукциона: верхнюю границу ставки мы намеренно не ограничивали, кампания работает на автостратегии, и <span class="cur" data-thb="24.9">24,9&nbsp;฿</span> — просто та цена, которую алгоритм счёл оправданной, чтобы держать текущий поток заявок. Отсюда практический вывод: в такой конфигурации цена клика вообще не метрика для решений. Смотреть надо на цену заявки и цену квалифицированного лида — они внизу воронки и учитывают качество трафика, а не только его стоимость.</p>
 
     <div class="honest" style="margin-top:32px">
       <div class="hrow artifact">
@@ -800,11 +831,11 @@
     <div class="faqlist">
       <details class="faq">
         <summary>Сколько стоит лид в зарубежной недвижимости?</summary>
-        <p>В нашем случае 1.045&nbsp;฿ — около 31 $ — за заявку с квиз-лендинга в Google Ads. Это новостройки Пхукета, русскоязычная аудитория, февраль — июль 2026, 369 заявок при расходе 385.453&nbsp;฿. Квалифицированный лид, то есть заявка с живым контактом, обошёлся в 1.626&nbsp;฿.</p>
+        <p>В нашем случае <span class="cur" data-thb="1045">1.045&nbsp;฿</span> — около 31 $ — за заявку с квиз-лендинга в Google Ads. Это новостройки Пхукета, русскоязычная аудитория, февраль — июль 2026, 369 заявок при расходе <span class="cur" data-thb="385453">385.453&nbsp;฿</span>. Квалифицированный лид, то есть заявка с живым контактом, обошёлся в <span class="cur" data-thb="1626">1.626&nbsp;฿</span>.</p>
       </details>
       <details class="faq">
         <summary>Сколько стоит лид на недвижимость в Таиланде и на Пхукете?</summary>
-        <p>По одному аккаунту Google Ads за полгода 2026 года — 1.045&nbsp;฿ за заявку и 1.626&nbsp;฿ за квалифицированный лид. Цена клика за период выросла с 6,5 до 24,9&nbsp;฿, при этом верхняя граница ставки не ограничивалась: кампания работала на автостратегии.</p>
+        <p>По одному аккаунту Google Ads за полгода 2026 года — <span class="cur" data-thb="1045">1.045&nbsp;฿</span> за заявку и <span class="cur" data-thb="1626">1.626&nbsp;฿</span> за квалифицированный лид. Цена клика за период выросла с 6,5 до <span class="cur" data-thb="24.9">24,9&nbsp;฿</span>, при этом верхняя граница ставки не ограничивалась: кампания работала на автостратегии.</p>
       </details>
       <details class="faq">
         <summary>Какая конверсия из заявки в сделку в недвижимости?</summary>
@@ -812,15 +843,15 @@
       </details>
       <details class="faq">
         <summary>Сколько стоит привести клиента на просмотр объекта?</summary>
-        <p>8.379&nbsp;฿ за один личный показ — встречу в офисе или выезд на объект. Это 46 показов за период. Самый дорогой переход в воронке именно здесь: до показа доходит каждый пятый квалифицированный лид.</p>
+        <p><span class="cur" data-thb="8379">8.379&nbsp;฿</span> за один личный показ — встречу в офисе или выезд на объект. Это 46 показов за период. Самый дорогой переход в воронке именно здесь: до показа доходит каждый пятый квалифицированный лид.</p>
       </details>
       <details class="faq">
         <summary>Сколько стоит одна сделка в зарубежной недвижимости?</summary>
-        <p>64.242&nbsp;฿ за сделку с оплаченным депозитом и 55.065&nbsp;฿ за проданную квартиру — разница в том, что один покупатель взял сразу две квартиры одной сделкой. За полгода получилось 6 сделок и 7 квартир, около одной сделки в месяц.</p>
+        <p><span class="cur" data-thb="64242">64.242&nbsp;฿</span> за сделку с оплаченным депозитом и <span class="cur" data-thb="55065">55.065&nbsp;฿</span> за проданную квартиру — разница в том, что один покупатель взял сразу две квартиры одной сделкой. За полгода получилось 6 сделок и 7 квартир, около одной сделки в месяц.</p>
       </details>
       <details class="faq">
         <summary>Какой рекламный бюджет нужен, чтобы получать сделки в недвижимости?</summary>
-        <p>В этом кейсе — около 66.000&nbsp;฿ в месяц, примерно 2.000 $, что давало около 63 заявок и одну сделку в месяц. Пропорция сохраняется: чтобы удвоить число сделок, одного бюджета мало — нужно двигать конверсию из квалифицированного лида в показ.</p>
+        <p>В этом кейсе — около <span class="cur" data-thb="66000">66.000&nbsp;฿</span> в месяц, примерно 2.000 $, что давало около 63 заявок и одну сделку в месяц. Пропорция сохраняется: чтобы удвоить число сделок, одного бюджета мало — нужно двигать конверсию из квалифицированного лида в показ.</p>
       </details>
       <details class="faq">
         <summary>Как передавать офлайн-конверсии из amoCRM в Google Ads?</summary>
@@ -892,6 +923,12 @@
   </div>
 </footer>
 
+<div class="stickycta" id="stickycta" hidden>
+  <p>Разберу вашу воронку от клика до сделки</p>
+  <a class="btn btn-primary" href="https://t.me/mudrrr" target="_blank" rel="noopener">Написать в Telegram</a>
+  <button class="close" type="button" id="ctaclose" aria-label="Закрыть">×</button>
+</div>
+
 <script>
 (function () {
   var root = document.documentElement;
@@ -905,6 +942,58 @@
     sync();
   });
   sync();
+
+  // Курс на 12.08.2026: ЦБ РФ 1 THB = 2,49 RUB; рынок 1 USD = 33,085 THB
+  var RATES = { THB: 1, RUB: 2.49, USD: 1 / 33.085 };
+  var SYM = { THB: '฿', RUB: '₽', USD: '$' };
+  var NOTE = {
+    THB: 'Все суммы в батах',
+    RUB: 'Пересчёт по курсу ЦБ РФ на 12.08.2026: 1\u00A0฿ = 2,49\u00A0₽',
+    USD: 'Пересчёт по курсу на 12.08.2026: 1\u00A0$ = 33,1\u00A0฿'
+  };
+  function fmt(v, cur) {
+    var abs = Math.abs(v), d;
+    if (cur === 'USD') d = abs < 10 ? 2 : (abs < 100 ? 1 : 0);
+    else d = abs < 100 ? 1 : 0;
+    var parts = v.toFixed(d).replace('.', ',').split(',');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return parts.join(',');
+  }
+  function setCur(cur) {
+    document.querySelectorAll('.cur').forEach(function (el) {
+      var val = fmt(parseFloat(el.getAttribute('data-thb')) * RATES[cur], cur);
+      el.textContent = el.hasAttribute('data-nosym') ? val : val + '\u00A0' + SYM[cur];
+    });
+    document.querySelectorAll('.cur-sym').forEach(function (el) { el.textContent = SYM[cur]; });
+    document.querySelectorAll('[data-curlabel]').forEach(function (el) {
+      el.setAttribute('data-label', 'Цена,\u00A0' + SYM[cur]);
+    });
+    document.querySelectorAll('.curbtn').forEach(function (b) {
+      b.classList.toggle('is-on', b.getAttribute('data-cur') === cur);
+    });
+    document.getElementById('curnote').textContent = NOTE[cur];
+  }
+  document.querySelectorAll('.curbtn').forEach(function (b) {
+    b.addEventListener('click', function () { setCur(b.getAttribute('data-cur')); });
+  });
+
+  var cta = document.getElementById('stickycta'), dismissed = false;
+  if (cta) {
+    document.getElementById('ctaclose').addEventListener('click', function () {
+      dismissed = true; cta.classList.remove('is-on');
+      setTimeout(function () { cta.hidden = true; }, 250);
+    });
+    var onScroll = function () {
+      if (dismissed) return;
+      var past = window.scrollY > window.innerHeight * 2;
+      var atEnd = window.scrollY + window.innerHeight > document.body.scrollHeight - 700;
+      if (past && !atEnd) { cta.hidden = false; requestAnimationFrame(function () { cta.classList.add('is-on'); }); }
+      else { cta.classList.remove('is-on'); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
 })();
 </script>
 </body>
