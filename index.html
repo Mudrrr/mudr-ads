@@ -295,6 +295,18 @@
   .fval { font-size: 14px; font-weight: 620; color: var(--ink-1); font-variant-numeric: tabular-nums; }
   .fval span { font-weight: 400; color: var(--ink-3); }
 
+
+  /* сравнение двух кампаний */
+  .cmp { display: flex; flex-direction: column; gap: 18px; margin-top: 4px; }
+  .cmp-row { display: grid; grid-template-columns: 1fr; gap: 7px; }
+  .cmp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .cmp-name { font-size: 15.5px; color: var(--ink-2); }
+  .cmp-val { font-size: 26px; font-weight: 660; color: var(--ink-1); font-variant-numeric: tabular-nums; line-height: 1; }
+  .cmp-track { height: 26px; background: var(--grid); border-radius: 4px; overflow: hidden; }
+  .cmp-fill { height: 26px; border-radius: 0 4px 4px 0; }
+  .cmp-sub { font-size: 13.5px; color: var(--ink-3); }
+  @media (max-width: 720px) { .cmp-val { font-size: 23px; } }
+
   .stack { display: flex; height: 42px; gap: 2px; }
   .seg { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 600; border-radius: 2px; }
   .seg:first-child { border-radius: 4px 2px 2px 4px; }
@@ -720,6 +732,31 @@
     </dl>
 
     <p>То есть квалифицированных получилось только <strong>16%</strong>. Для русской кампании у нас было <strong>64%</strong>.</p>
+
+
+    <figure>
+      <div class="fig-title">Доля квалифицированных заявок</div>
+      <div class="fig-sub">Одна и та же связка, две языковые аудитории</div>
+      <div class="cmp">
+        <div class="cmp-row">
+          <div class="cmp-head">
+            <span class="cmp-name">Русскоязычная кампания</span>
+            <span class="cmp-val">64,2%</span>
+          </div>
+          <div class="cmp-track"><div class="cmp-fill" style="width:64.2%;background:var(--series-1)"></div></div>
+          <div class="cmp-sub">237 квалифицированных из 369 заявок</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-head">
+            <span class="cmp-name">Англоязычная кампания</span>
+            <span class="cmp-val">16,2%</span>
+          </div>
+          <div class="cmp-track"><div class="cmp-fill" style="width:16.2%;background:var(--series-2)"></div></div>
+          <div class="cmp-sub">23 квалифицированных из 142 заявок, 55 из них — спам и несуществующие номера</div>
+        </div>
+      </div>
+      <figcaption>Разрыв вчетверо. И он не про то, что англоязычная аудитория хуже покупает: почти четыре заявки из десяти были номерами, по которым невозможно начать разговор.</figcaption>
+    </figure>
 
     <p>Я сначала смотрел на это как на обычное падение качества трафика. Но когда начали смотреть заявки руками, стало понятно, что проблема немного другая. Очень много номеров просто не существовало. В комментариях постоянно повторялось: «номер не существует», «нет WhatsApp», «No WA», «random number». То есть менеджер не мог даже начать разговор с человеком.</p>
 
